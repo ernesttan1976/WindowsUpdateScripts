@@ -2,7 +2,7 @@
 # Schedule this to run daily between 4-6 AM
 
 # Create log file with timestamp
-$UserHome = "C:\Users\Ernest"
+$UserHome = "~\"
 $LogFile = $UserHome + "\Logs\GlobalProtect-Update-$(Get-Date -Format 'yyyy-MM-dd').log"
 $null = New-Item -Path "$UserHome\Logs" -ItemType Directory -Force
 
