@@ -38,7 +38,6 @@ The script automatically performs the following operations:
 - **Comprehensive Logging**: All operations are logged with timestamps
 - **Progress Tracking**: Visual progress indicators for long-running operations
 - **Error Handling**: Graceful handling of errors with detailed logging
-- **Scheduled Execution**: Designed to run daily between 4-6 AM
 
 ## Log Files
 
