@@ -12,17 +12,24 @@ if %errorLevel% == 0 (
     pause
     exit /b 1
 )
-REM Define the list of repository paths
-set REPOS=^
-C:\Users\Ernest\Raid\Qualifly\qfly-end-db ^
-C:\Users\Ernest\Raid\Qualifly\qfly-end-web-service ^
-C:\Users\Ernest\Raid\Qualifly\qfly-end-training-service
+REM Check if repos.txt file exists
+set REPOS_FILE=%~dp0repos.txt
+if not exist "%REPOS_FILE%" (
+    echo ERROR: repos.txt file not found at: %REPOS_FILE%
+    echo Please create a repos.txt file with one repository path per line.
+    echo.
+    pause
+    exit /b 1
+)
 
-echo Opening Cursor for the following repositories:
+echo Opening Cursor for repositories listed in: %REPOS_FILE%
 echo.
 
-REM Loop through each repository and perform git operations
-for %%r in (%REPOS%) do (
+REM Loop through each repository path from the file
+for /f "usebackq delims=" %%r in ("%REPOS_FILE%") do (
+    REM Skip empty lines
+    if "%%r"=="" continue
+    
     echo.
     echo ========================================
     echo Processing: %%r
