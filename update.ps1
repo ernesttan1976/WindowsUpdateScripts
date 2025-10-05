@@ -318,5 +318,11 @@ try {
         Remove-IncompleteUpdates
     }
     
+    Write-Host "`nPress any key to continue..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
     exit 1
 }
+
+# Add pause at the end to see any final messages or errors
+Write-Host "`nScript completed. Press any key to close this window..."
+$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")

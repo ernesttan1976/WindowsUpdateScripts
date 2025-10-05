@@ -1,3 +1,1 @@
-C:\Users\Ernest\Raid\Flow\shadcn-learn
-C:\Users\Ernest\Raid\Flow\flow-be
 C:\Users\Ernest\Raid\Flow\flow-web-fe
