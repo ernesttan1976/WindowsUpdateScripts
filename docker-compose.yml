@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run --token eyJhIjoiZDU5MzVkNmRiMmU3NWI3YmY3Y2FlNTUzZjQyZWJmZDgiLCJ0IjoiYTFlMDc1MWQtYjM3Zi00ZjI1LWE1ZjEtZjllYjM4NzYyMjFlIiwicyI6IlptSmtZV001TlRVdE5URmxNeTAwTm1KbExUa3hZbUV0WWpWallqSTFNakkzTjJRMiJ9
+    environment:
+      - TZ=UTC
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
