@@ -87,7 +87,7 @@ function Run-UpdateScript {
 
 Write-Log "=========================================="
 Write-Log "Starting System Update Monitor"
-Write-Log "Checking interval: 1 hour"
+Write-Log "Checking interval: 30 minutes"
 Write-Log "=========================================="
 
 # Main monitoring loop
@@ -108,10 +108,10 @@ while ($true) {
         Write-Log "System is up to date. No action needed."
     }
     
-    Write-Log "Next check in 1 hour..."
+    Write-Log "Next check in 30 minutes..."
     Write-Log "Waiting... (Press Ctrl+C to stop monitoring)"
     
-    # Sleep for 1 hour (3600 seconds)
-    Start-Sleep -Seconds 3600
+    # Sleep for 30 minutes (1800 seconds)
+    Start-Sleep -Seconds 1800
 }
 

@@ -4,7 +4,7 @@ echo System Update Monitor
 echo ========================================
 echo.
 echo This script will continuously monitor your system for updates.
-echo It checks every hour for:
+echo It checks every 30 minutes for:
 echo   - Windows Defender virus definition updates
 echo   - Windows system updates
 echo.
