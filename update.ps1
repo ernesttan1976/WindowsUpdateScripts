@@ -301,11 +301,22 @@ try {
 
     Write-Log "GlobalProtect compliance update completed successfully"
     
-    # Optional: Restart if updates require it (uncomment if needed)
-    # if ((Get-WURebootStatus).RebootRequired) {
-    #     Write-Log "System restart required. Scheduling restart in 5 minutes..."
-    #     shutdown /r /t 300 /c "Restarting for GlobalProtect compliance updates"
-    # }
+    # Check if restart is required after updates
+    try {
+        $RebootStatus = Get-WURebootStatus -Silent
+        if ($RebootStatus.RebootRequired) {
+            Write-Log "*** SYSTEM RESTART REQUIRED ***"
+            Write-Host "`n" -NoNewline
+            Write-Host "========================================" -ForegroundColor Yellow
+            Write-Host "     RESTART REQUIRED" -ForegroundColor Red -BackgroundColor Yellow
+            Write-Host "========================================" -ForegroundColor Yellow
+            Write-Host "The installed updates require a system restart to complete." -ForegroundColor Yellow
+            Write-Host "Please restart your computer at your earliest convenience." -ForegroundColor Yellow
+            Write-Host "========================================`n" -ForegroundColor Yellow
+        }
+    } catch {
+        Write-Log "Could not determine reboot status: $($_.Exception.Message)"
+    }
 
 } catch {
     Write-Progress -Activity "GlobalProtect Update" -Completed
